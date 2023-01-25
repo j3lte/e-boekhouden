@@ -1,6 +1,9 @@
 name: e-boekhouden
 
-on: [push]
+on:
+  push:
+    branches:
+      - develop
 
 env:
   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
