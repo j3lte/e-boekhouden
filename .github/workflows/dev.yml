@@ -5,6 +5,13 @@ on:
     branches:
       - develop
 
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 env:
   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
