@@ -16,7 +16,7 @@ env:
   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
 jobs:
-  e-boekhouden:
+  e-boekhouden-main:
     runs-on: ubuntu-latest
 
     concurrency:
