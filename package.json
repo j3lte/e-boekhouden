@@ -1,0 +1,95 @@
+{
+  "name": "e-boekhouden",
+  "description": "E-boekhouden Node.JS client",
+  "version": "0.1.0",
+  "main": "./build/cjs/index.js",
+  "module": "./build/esm/index.js",
+  "types": "./build/src/index.d.ts",
+  "author": {
+    "name": "Jelte Lagendijk",
+    "email": "jelte@caffcode.com"
+  },
+  "keywords": [
+    "e-boekhouden",
+    "boekhouden",
+    "boekhouding"
+  ],
+  "license": "MIT",
+  "repository": "github:j3lte/e-boekhouden",
+  "bugs": {
+    "url": "https://github.com/j3lte/e-boekhouden"
+  },
+  "files": [
+    "build/",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": "^18.7.0 || >= 16",
+    "npm": "^8.16.0 || >= 8"
+  },
+  "volta": {
+    "node": "18.7.0",
+    "npm": "8.16.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "npm run clean && npm run type:dts && npm run build:main && npm run docs",
+    "build:main": "node -r ./esbuild-hook ./scripts/build",
+    "clean": "node -r ./esbuild-hook ./scripts/clean",
+    "type:dts": "tsc --emitDeclarationOnly",
+    "type:check": "tsc --noEmit",
+    "format": "prettier \"src/**/*.ts\" --write",
+    "format:check": "prettier \"src/**/*.ts\" --check",
+    "lint": "eslint src --ext .ts --fix",
+    "lint:check": "eslint src --ext .ts",
+    "test": "vitest run",
+    "test:watch": "vitest watch",
+    "test:coverage": "vitest run --coverage",
+    "test:setup": "node -r ./esbuild-hook ./scripts/testSetup",
+    "cz": "cz",
+    "semantic-release": "semantic-release",
+    "docs:generate": "typedoc --plugin typedoc-plugin-extras --name \"E-boekhouden Node.JS client\" --includeVersion src/index.ts",
+    "docs:assets": "node -r ./esbuild-hook ./scripts/docs",
+    "docs": "npm run docs:generate && npm run docs:assets",
+    "release": "npx gh-pages -d docs -b gh-pages",
+    "preview": "live-server docs",
+    "local": "npx ts-node ./scripts/local"
+  },
+  "devDependencies": {
+    "@compodoc/live-server": "^1.2.3",
+    "@ryansonshine/commitizen": "^4.2.8",
+    "@ryansonshine/cz-conventional-changelog": "^3.3.4",
+    "@semantic-release/changelog": "^6.0.2",
+    "@semantic-release/commit-analyzer": "^9.0.2",
+    "@semantic-release/github": "^8.0.7",
+    "@semantic-release/npm": "^9.0.2",
+    "@semantic-release/release-notes-generator": "^10.0.3",
+    "@types/node": "^18.11.18",
+    "@types/prompts": "^2.4.2",
+    "@typescript-eslint/eslint-plugin": "^5.48.2",
+    "@typescript-eslint/parser": "^5.48.2",
+    "c8": "^7.12.0",
+    "esbuild": "^0.17.3",
+    "eslint": "^8.32.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-import-resolver-typescript": "^3.5.3",
+    "eslint-plugin-eslint-comments": "^3.2.0",
+    "eslint-plugin-import": "^2.27.5",
+    "nyc": "^15.1.0",
+    "prettier": "^2.8.3",
+    "semantic-release": "^20.0.2",
+    "source-map-support": "^0.5.21",
+    "typedoc": "^0.23.24",
+    "typedoc-plugin-extras": "^2.3.2",
+    "typescript": "^4.9.4",
+    "vitest": "^0.27.2"
+  },
+  "overrides": {
+    "semver-regex": "3.1.4"
+  },
+  "dependencies": {
+    "soap": "^1.0.0"
+  }
+}
